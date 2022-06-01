@@ -7,24 +7,33 @@ cnv.height = 800;
 let y = 50
 let animatep = false
 let pencilimg = document.getElementById("pencil");
+let fallpencil = document.getElementById("fallpencil")
 
 
 requestAnimationFrame(animate);
 function animate() {
     // UPDATE ELEMENTS ON CANVAS
     if (animatep === true) {
-        y+= 3;
-    } 
+        y += 3;
+    }
 
-    if (y >= 710){
-        y = 710
+
+    ctx.drawImage(pencilimg, 300, y, 100, 100)
+    if (y >= 710) {
+        y = 730
+
+        if (y === 730) {
+            ctx.fillStyle = "white"
+            ctx.fillRect(0, 0, cnv.width, cnv.height); // Background
+
+            ctx.drawImage(fallpencil, 345, 745, 100, 100)
+        }
     }
 
     // DRAW CANVAS
-    ctx.fillStyle = "white"
-    ctx.fillRect(0, 0, cnv.width, cnv.height); // Background
+    // ctx.fillStyle = "white"
+    // ctx.fillRect(0, 0, cnv.width, cnv.height); // Background
 
-    ctx.drawImage(pencilimg, 300, y, 100, 100)
 
     // REQUEST ANIMATION FRAME
     requestAnimationFrame(animate);
